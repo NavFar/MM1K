@@ -18,6 +18,7 @@ Job Generator::generateJob(Distribution dueTimeDistribution){
 		float due = exponentialDistribution(randomNumberGenerator);
 		return Job(load,due);
 	}
+	return Job(1,1);
 }
 float Generator::generateJobInterval(){
 	std::mt19937_64 randomNumberGenerator;

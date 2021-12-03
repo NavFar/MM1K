@@ -12,5 +12,5 @@ class Server {
 	Server(float,int);
 	bool addJob(Job);
 	int run(float);
-}
+};
 #endif

@@ -6,9 +6,10 @@ Server::Server(float mu, int maxSize){
 	this->maxSize = maxSize;
 }
 bool Server::addJob(Job job){
-	if(this->queue.size== this->maxSize)
+	if(this->queue.size()== this->maxSize)
 		return false;
 	this->queue.push_back(job);
+	return true;
 }
 int Server::run(float duration){
 	int droped = 0;
@@ -16,7 +17,7 @@ int Server::run(float duration){
 		float passedTime=duration;
 		duration = duration - this->queue.front().getLoad();
 		if(duration>0){
-			passedTime=this.queue.front().getLoad();
+			passedTime=this->queue.front().getLoad();
 			this->queue.pop_front();
 		}
 		else {

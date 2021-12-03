@@ -4,7 +4,7 @@ Job::Job(float load, float due){
 	this->load = load;
 	this->due = due;
 }
-float Job::decreaseDue(float duration){
+void Job::decreaseDue(float duration){
 	this->due -= duration;
 }
 float Job::getLoad(){
