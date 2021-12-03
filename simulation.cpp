@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include"headers/generator.h"
 #include"headers/server.h"
 #include"headers/distribution.h"
@@ -7,9 +8,10 @@
 using namespace std;
 int main() {
 	cout.precision(20);
-	cout<<"lambda-theta-mu"<<endl;
+	ifstream fin("parameters.conf");
 	float lambda=0,theta=0,mu=0;
-	cin>>lambda>>theta>>mu;
+	fin>>theta>>mu;
+	cin>>lambda;
 	Generator generator(lambda,theta);
 	Server server(mu,12);
 	long blocked=0;

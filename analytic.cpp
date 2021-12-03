@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include<limits>
+#include<fstream>
 using namespace std;
 //////////////////////////////////////////////////////////////////////////////////////////////
 enum class Distribution {
@@ -54,8 +55,9 @@ long double p(int n, double theta, double lambda, double mu,Distribution distrib
 int main() {
 	cout.precision(20);
 	double theta=0, lambda=0, mu=0;
-	cout<<"lambda-theta-mu"<<endl;
-	cin>>lambda>>theta>>mu;
+	ifstream fin("parameters.conf");
+	fin>>theta>>mu;
+	cin>>lambda;
 	long double sum_p_fixed=1, sum_p_exponential=1;
 	for(int i=1;i<=12;i++){
 		sum_p_fixed+=p(i,theta,lambda,mu,Distribution::Fixed);
