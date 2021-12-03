@@ -4,6 +4,7 @@ class Job {
 		float due;
 	public:
 		Job(float,float);
+		void decreaseDue(float);
 		float getLoad();
 		void setLoad(float);
 		float getDue();
