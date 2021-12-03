@@ -26,7 +26,7 @@ int main() {
 
 	}
 	cout<<(double)blocked/REPEAT<<"\t";
-	cout<<(double)droped/REPEAT<<endl;
+	cout<<(double)droped/REPEAT<<"\t";
 
 	blocked=0;
 	droped=0;
