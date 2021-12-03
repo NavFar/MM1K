@@ -22,7 +22,6 @@ int main() {
 		droped+= server.run(interval);
 	
 	}
-	cout<<blocked<<endl;
 	cout<<"Pb "<<(double)blocked/total<<endl;
 	cout<<"Pd "<<(double)droped/total<<endl;
 }
