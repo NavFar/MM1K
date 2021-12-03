@@ -1,9 +1,9 @@
 #include<iostream>
 #include<fstream>
-#include"headers/generator.h"
-#include"headers/server.h"
-#include"headers/distribution.h"
-#include"headers/job.h"
+#include"../headers/generator.h"
+#include"../headers/server.h"
+#include"../headers/distribution.h"
+#include"../headers/job.h"
 #define REPEAT 10000000
 using namespace std;
 int main() {

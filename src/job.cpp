@@ -1,4 +1,4 @@
-#include"headers/job.h"
+#include"../headers/job.h"
 #include<iostream>
 Job::Job(float load, float due){
 	this->load = load;

@@ -1,5 +1,5 @@
-#include"headers/server.h"
-#include"headers/job.h"
+#include"../headers/server.h"
+#include"../headers/job.h"
 Server::Server(float mu, int maxSize){
 	this->mu = mu;
 	this->maxSize = maxSize;
