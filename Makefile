@@ -1,4 +1,12 @@
 all: simulation analytic
+analytic-all-lambda: analytic
+	for i in `seq 0.1 0.1 20`; do\
+		echo  $$i | ./analytic;  \
+	done
+simulation-all-lambda:simulation
+	for i in `seq 0.1 0.1 20`; do\
+		echo $$i | ./simulation;	\
+	done
 job.o: job.cpp
 	g++ -c -o job.o job.cpp
 generator.o: generator.cpp 
