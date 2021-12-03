@@ -1,3 +1,5 @@
+#ifndef JOB_H
+#define JOB_H
 class Job {
 	private:
 		float load;
@@ -10,3 +12,4 @@ class Job {
 		float getDue();
 		void setDue(float);
 }; 
+#endif

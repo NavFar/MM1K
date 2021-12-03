@@ -1,3 +1,6 @@
+#ifndef GENERATOR_H
+#define GENERATOR_H
+
 #include"job.h"
 #include"distribution.h"
 class Generator{
@@ -9,3 +12,4 @@ class Generator{
 		Job generateJob(Distribution);
 		float generateJobInterval();
 };
+#endif
