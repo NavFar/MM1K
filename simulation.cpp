@@ -5,7 +5,7 @@
 #include"headers/job.h"
 using namespace std;
 int main() {
-	cout<<"lambda, theta, mu"<<endl;
+	cout<<"lambda-theta-mu"<<endl;
 	float lambda=0,theta=0,mu=0;
 	cin>>lambda>>theta>>mu;
 	Generator generator(lambda,theta);
