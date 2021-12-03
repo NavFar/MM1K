@@ -65,7 +65,7 @@ int main() {
 	}
 
 	cout<<p(12,theta,lambda,mu,Distribution::Fixed)/sum_p_fixed<<"\t";
-	cout<<1-(p(12,theta,lambda,mu,Distribution::Fixed)/sum_p_fixed)-(mu/lambda)*((sum_p_fixed-1)/sum_p_fixed)<<endl;
+	cout<<1-(p(12,theta,lambda,mu,Distribution::Fixed)/sum_p_fixed)-(mu/lambda)*((sum_p_fixed-1)/sum_p_fixed)<<"\t";
 
 	cout<<p(12,theta,lambda,mu,Distribution::Exponential)/sum_p_exponential<<"\t";
 	cout<<1-(p(12,theta,lambda,mu,Distribution::Exponential)/sum_p_exponential)-(mu/lambda)*((sum_p_exponential-1)/sum_p_exponential)<<endl;
