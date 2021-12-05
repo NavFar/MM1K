@@ -1,6 +1,6 @@
-#include"../headers/generator.h"
-#include"../headers/job.h"
-#include"../headers/distribution.h"
+#include"generator.h"
+#include"job.h"
+#include"distribution.h"
 #include<random>
 Generator::Generator(float lambda, float theta){
 	this->lambda = lambda;
