@@ -2,7 +2,7 @@ SRCDIR=src/
 BINDIR=bin/
 BUILDDIR=build/
 CC=g++
-
+FLAGS=-I ./headers
 all: simulation analytic
 run: simulation analytic
 	echo -e "Analytic">results.txt;\
@@ -22,14 +22,14 @@ simulation-all-lambda:simulation
 		echo $$i | $(BINDIR)/simulation;	\
 	done
 job.o: $(SRCDIR)job.cpp
-	$(CC) -c -o $(BUILDDIR)job.o $(SRCDIR)job.cpp
+	$(CC) $(FLAGS) -c -o $(BUILDDIR)job.o $(SRCDIR)job.cpp
 generator.o: $(SRCDIR)generator.cpp 
-	$(CC) -c -o $(BUILDDIR)generator.o  $(SRCDIR)generator.cpp
+	$(CC) $(FLAGS) -c -o $(BUILDDIR)generator.o  $(SRCDIR)generator.cpp
 server.o: $(SRCDIR)server.cpp  
-	$(CC) -c -o $(BUILDDIR)server.o $(SRCDIR)server.cpp 
+	$(CC) $(FLAGS) -c -o $(BUILDDIR)server.o $(SRCDIR)server.cpp 
 simulation: server.o generator.o job.o $(SRCDIR)simulation.cpp
-	$(CC) -o $(BINDIR)simulation $(BUILDDIR)server.o $(BUILDDIR)generator.o $(BUILDDIR)job.o $(SRCDIR)simulation.cpp
+	$(CC) $(FLAGS) -o $(BINDIR)simulation $(BUILDDIR)server.o $(BUILDDIR)generator.o $(BUILDDIR)job.o $(SRCDIR)simulation.cpp
 analytic: $(SRCDIR)analytic.cpp
-	$(CC) -o $(BINDIR)analytic $(SRCDIR)analytic.cpp  
+	$(CC) $(FLAGS) -o $(BINDIR)analytic $(SRCDIR)analytic.cpp  
 clean:
 	rm -rf $(BINDIR)* $(BUILDDIR)*
