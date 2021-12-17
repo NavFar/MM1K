@@ -2,14 +2,16 @@
 #define SERVER_H
 #include<deque>
 #include"job.h"
-
+#include"server-runner.h"
 class Server {
 	private:
 	std::deque<Job> queue;
 	float mu;
 	int maxSize;
+	ServerRunner * runner;
 	public:
 	Server(float,int);
+	~Server();
 	bool addJob(Job);
 	int run(float);
 };
