@@ -21,20 +21,10 @@ simulation-all-lambda:simulation
 	for i in `seq 0.1 0.1 20`; do\
 		echo $$i | $(BINDIR)/simulation;	\
 	done
-#job.o: $(SRCDIR)job.cpp
-#	$(CC) $(FLAGS) -c -o $(BUILDDIR)job.o $(SRCDIR)job.cpp
-#generator.o: $(SRCDIR)generator.cpp 
-#	$(CC) $(FLAGS) -c -o $(BUILDDIR)generator.o  $(SRCDIR)generator.cpp
-#fcfs-runner.o: $(SRCDIR)fcfs-runner.cpp
-#	$(CC) $(FLAGS) -c -o $(BUILDDIR)$@  $<
-#server.o: $(SRCDIR)server.cpp  
-#	$(CC) $(FLAGS) -c -o $(BUILDDIR)server.o $(SRCDIR)server.cpp 
 %.o: $(SRCDIR)%.cpp  
 	$(CC) $(FLAGS) -c -o $(BUILDDIR)$@ $< 
-
-
-simulation: server.o generator.o job.o $(SRCDIR)simulation.cpp
-	$(CC) $(FLAGS) -o $(BINDIR)simulation $(BUILDDIR)server.o $(BUILDDIR)generator.o $(BUILDDIR)job.o $(SRCDIR)simulation.cpp
+simulation: $(SRCDIR)simulation.cpp   generator.o job.o fcfs-runner.o server.o  
+	$(CC) $(FLAGS) -o $(BINDIR)$@ $< $(BUILDDIR)generator.o $(BUILDDIR)job.o $(BUILDDIR)fcfs-runner.o $(BUILDDIR)server.o  
 analytic: $(SRCDIR)analytic.cpp
 	$(CC) $(FLAGS) -o $(BINDIR)analytic $(SRCDIR)analytic.cpp  
 clean:
