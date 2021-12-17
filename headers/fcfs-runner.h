@@ -1,9 +1,10 @@
-#ifndef FCFS_SERVER_H
-#define FCFS_SERVER_H
-#include<deque.h>
+#ifndef FCFS_RUNNER_H
+#define FCFS_RUNNER_H
+#include<deque>
+#include"job.h"
 #include"server-runner.h"
-class FCFSServer :public ServerRunner {
+class FCFSRunner :public ServerRunner {
 	public:
-		void run(float duration, std::deque& queue);
+		void run(float duration, std::deque<Job>& queue);
 };
 #endif
