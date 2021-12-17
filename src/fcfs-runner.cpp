@@ -2,5 +2,5 @@
 #include"job.h"
 #include<deque>
 
-void FCFSRunner::run(float duration, std::deque<Job>& queue){
+int FCFSRunner::run(float duration, std::deque<Job>& queue){
 }
