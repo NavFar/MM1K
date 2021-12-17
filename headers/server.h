@@ -10,7 +10,7 @@ class Server {
 	int maxSize;
 	ServerRunner * runner;
 	public:
-	Server(float,int);
+	Server(float,int,ServerRunner*);
 	~Server();
 	bool addJob(Job);
 	int run(float);

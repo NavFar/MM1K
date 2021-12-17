@@ -1,10 +1,10 @@
 #include"server.h"
 #include"job.h"
-#include"fcfs-runner.h"
-Server::Server(float mu, int maxSize){
+#include"server-runner.h"
+Server::Server(float mu, int maxSize, ServerRunner * runner){
 	this->mu = mu;
 	this->maxSize = maxSize;
-	this->runner = new FCFSRunner(); 
+	this->runner = runner; 
 }
 Server::~Server(){
 	delete this->runner;
