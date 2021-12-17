@@ -7,7 +7,6 @@ Server::Server(float mu, int maxSize, ServerRunner * runner){
 	this->runner = runner; 
 }
 Server::~Server(){
-	delete this->runner;
 }
 bool Server::addJob(Job job){
 	if(this->queue.size()== this->maxSize)

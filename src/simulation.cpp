@@ -4,6 +4,7 @@
 #include"server.h"
 #include"distribution.h"
 #include"job.h"
+#include"fcfs-runner.h"
 #define REPEAT 10000000
 using namespace std;
 int main() {
@@ -13,7 +14,7 @@ int main() {
 	fin>>theta>>mu;
 	cin>>lambda;
 	Generator generator(lambda,theta);
-	Server server(mu,12);
+	Server server(mu,12,new FCFSRunner());
 	long blocked=0;
 	long droped=0;
 	for(long i=0;i<REPEAT;i++) {
