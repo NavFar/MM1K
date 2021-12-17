@@ -3,6 +3,6 @@
 #include<deque.h>
 class ServerRunner {
 	public:
-		virtual void run(float duration,deque& queue)=0;
+		virtual void run(float duration,std::deque& queue)=0;
 };
 #endif
