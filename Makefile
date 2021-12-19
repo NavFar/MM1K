@@ -4,22 +4,23 @@ BUILDDIR=build/
 CC=g++
 FLAGS=-I ./headers
 all: simulation analytic
-run: simulation analytic
+run: run-PS
+run-%: simulation analytic
 	echo -e "Analytic">results.txt;\
 	for i in `seq 5 5 15`; do\
-		echo $$i| $(BINDIR)/analytic >>results.txt;\
+		echo $* $$i| $(BINDIR)/analytic >>results.txt;\
 	done;\
 	echo -e "Simulation">>results.txt;\
 	for i in `seq 5 5 15`; do\
-		echo $$i| $(BINDIR)/simulation >>results.txt;\
+		echo $* $$i| $(BINDIR)/simulation >>results.txt;\
 	done;
-analytic-all-lambda: analytic
+analytic-all-lambda-%: analytic
 	for i in `seq 0.1 0.1 20`; do\
-		echo  $$i | $(BINDIR)/analytic;  \
+		echo $*  $$i | $(BINDIR)/analytic;  \
 	done
-simulation-all-lambda:simulation
+simulation-all-lambda-%:simulation
 	for i in `seq 0.1 0.1 20`; do\
-		echo $$i | $(BINDIR)/simulation;	\
+		echo $* $$i | $(BINDIR)/simulation;	\
 	done
 %.o: $(SRCDIR)%.cpp  
 	$(CC) $(FLAGS) -c -o $(BUILDDIR)$@ $< 
