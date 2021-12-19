@@ -5,6 +5,7 @@
 #include<string>
 #include"distribution.h"
 #include"queue-strategy.h"
+#include"constants.h"
 using namespace std;
 //////////////////////////////////////////////////////////////////////////////////////////////
 int factorial(int n) {
@@ -118,14 +119,14 @@ int main() {
 	cout.precision(20);
 	double theta=0, lambda=0, mu=0;
 	string queueStrategy;
-	ifstream fin("parameters.conf");
+	ifstream fin(PARAMETERS_FILE);
 	fin>>theta>>mu;
 	cin>>queueStrategy;
 	cin>>lambda;
-	if(queueStrategy=="FCFS")
-		printPbAndPd(12,theta, lambda, mu, QueueStrategy::FCFS);
-	else if(queueStrategy=="PS")
-		printPbAndPd(12,theta, lambda, mu, QueueStrategy::PS);
+	if(queueStrategy==FCFS_NAME)
+		printPbAndPd(K,theta, lambda, mu, QueueStrategy::FCFS);
+	else if(queueStrategy==PS_NAME)
+		printPbAndPd(K,theta, lambda, mu, QueueStrategy::PS);
 }
 
 

@@ -8,11 +8,11 @@
 #include"server-runner.h"
 #include"fcfs-runner.h"
 #include"ps-runner.h"
-#define REPEAT 10000000
+#include"constants.h"
 using namespace std;
 int main() {
 	cout.precision(20);
-	ifstream fin("parameters.conf");
+	ifstream fin(PARAMETERS_FILE);
 	float lambda=0,theta=0,mu=0;
 	string queueStrategy;
 	fin>>theta>>mu;
@@ -21,13 +21,13 @@ int main() {
 	Generator generator(lambda,theta);
 	ServerRunner * serverRunner;
 	
-	if(queueStrategy=="FCFS")
+	if(queueStrategy==FCFS_NAME)
 		serverRunner = new FCFSRunner();
-	else if(queueStrategy=="PS")
+	else if(queueStrategy==PS_NAME)
 		serverRunner = new PSRunner();
 	else
 		return 1;
-	Server server(mu,12,new FCFSRunner());
+	Server server(mu,K,new FCFSRunner());
 	long blocked=0;
 	long droped=0;
 	for(long i=0;i<REPEAT;i++) {
