@@ -13,11 +13,11 @@ this Project consists of two parts:
 
 ## Constants
 this file located in `headers/constants.h` and hold these constants:
-- K: which is the number of elements available in queue.
-- REPEAT: which is the number of times the simulation should run for sets of inputs.
-- PARAMETERS_FILE: which is the file name for parameters like `theta` and `mu`.
-- FCFS_NAME: which is the name that determine the FCFS queueing strategy.
-- PS_NAME: which is the name that determine the PS queueing strategy.
+- `K` : which is the number of elements available in queue.
+- `REPEAT` : which is the number of times the simulation should run for sets of inputs.
+- `PARAMETERS_FILE` : which is the file name for parameters like `theta` and `mu`.
+- `FCFS_NAME` : which is the name that determine the FCFS queueing strategy.
+- `PS_NAME` : which is the name that determine the PS queueing strategy.
 
 ## Input format
 both of approaches read the values of `theta` and `mu` from a file called `parameters.conf` which is located in main directory and they read `queueStrategy` which will determine the queueing strategy and   `lambda` from standard input.
