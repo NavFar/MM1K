@@ -24,8 +24,8 @@ simulation-all-lambda-%:simulation
 	done
 %.o: $(SRCDIR)%.cpp  
 	$(CC) $(FLAGS) -c -o $(BUILDDIR)$@ $< 
-simulation: $(SRCDIR)simulation.cpp   generator.o job.o fcfs-runner.o server.o  
-	$(CC) $(FLAGS) -o $(BINDIR)$@ $< $(BUILDDIR)generator.o $(BUILDDIR)job.o $(BUILDDIR)fcfs-runner.o $(BUILDDIR)server.o  
+simulation: $(SRCDIR)simulation.cpp   generator.o job.o fcfs-runner.o ps-runner.o server.o  
+	$(CC) $(FLAGS) -o $(BINDIR)$@ $< $(BUILDDIR)generator.o $(BUILDDIR)job.o $(BUILDDIR)fcfs-runner.o $(BUILDDIR)ps-runner.o  $(BUILDDIR)server.o  
 analytic: $(SRCDIR)analytic.cpp
 	$(CC) $(FLAGS) -o $(BINDIR)analytic $(SRCDIR)analytic.cpp  
 clean:
