@@ -15,5 +15,5 @@ bool Server::addJob(Job job){
 	return true;
 }
 int Server::run(float duration){
-	return	this->runner->run(this->mu*duration, this->queue);
+	return	this->runner->run(duration, this->mu, this->queue);
 }
