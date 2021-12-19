@@ -2,6 +2,7 @@
 #include<cmath>
 #include<limits>
 #include<fstream>
+#include<string>
 #include"distribution.h"
 #include"queue-strategy.h"
 using namespace std;
@@ -116,10 +117,15 @@ void printPbAndPd(int k,double theta, double lambda, double mu, QueueStrategy qu
 int main() {
 	cout.precision(20);
 	double theta=0, lambda=0, mu=0;
+	string queueStrategy;
 	ifstream fin("parameters.conf");
 	fin>>theta>>mu;
+	cin>>queueStrategy;
 	cin>>lambda;
-	printPbAndPd(12,theta, lambda, mu, QueueStrategy::PS);
+	if(queueStrategy=="FCFS")
+		printPbAndPd(12,theta, lambda, mu, QueueStrategy::FCFS);
+	else if(queueStrategy=="PS")
+		printPbAndPd(12,theta, lambda, mu, QueueStrategy::PS);
 }
 
 
