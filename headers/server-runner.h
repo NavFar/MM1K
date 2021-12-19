@@ -4,6 +4,6 @@
 #include"job.h"
 class ServerRunner {
 	public:
-		virtual int run(float duration,std::deque<Job> &queue)=0;
+		virtual int run(float duration, float mu, std::deque<Job> &queue)=0;
 };
 #endif

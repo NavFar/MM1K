@@ -2,6 +2,6 @@
 #define QUEUE_STRATEGY_H
 enum class QueueStrategy {
 	FCFS,
-	PC
+	PS
 };
 #endif
