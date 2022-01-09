@@ -31,7 +31,7 @@ int main() {
 	long blocked=0;
 	long droped=0;
 	for(long i=0;i<REPEAT;i++) {
-		Job job = generator.generateJob(Distribution::Fixed);
+		Job job = generator.generateJob(Distribution::Fixed,Distribution::Uniform);
 		float interval = generator.generateJobInterval();
 		if(!server.addJob(job))	{
 			blocked++;
@@ -45,7 +45,7 @@ int main() {
 	blocked=0;
 	droped=0;
 	for(long i=0;i<REPEAT;i++) {
-		Job job = generator.generateJob(Distribution::Exponential);
+		Job job = generator.generateJob(Distribution::Exponential,Distribution::Uniform);
 		float interval = generator.generateJobInterval();
 		if(!server.addJob(job))	{
 			blocked++;
