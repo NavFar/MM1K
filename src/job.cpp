@@ -1,8 +1,10 @@
 #include"job.h"
+#include"job-type.h"
 #include<iostream>
-Job::Job(float load, float due){
+Job::Job(float load, float due, JobType type){
 	this->load = load;
 	this->due = due;
+	this->type = type;
 }
 void Job::decreaseDue(float duration){
 	this->due = this->due- duration;
@@ -18,4 +20,10 @@ float Job::getDue(){
 }
 void Job::setDue(float due){
 	this->due = due;
+}
+JobType Job::getType(){
+	return this->type;
+}
+void Job::setType(JobType type){
+	this->type = type;
 }

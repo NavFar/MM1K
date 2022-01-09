@@ -9,9 +9,10 @@ class Generator{
 		float lambda;
 		float theta;
 		std::default_random_engine randomNumberGenerator;
+
 	public:
 		Generator(float, float);
-		Job generateJob(Distribution);
+		Job generateJob(Distribution,Distribution);
 		float generateJobInterval();
 };
 #endif
