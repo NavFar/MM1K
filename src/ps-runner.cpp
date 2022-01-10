@@ -3,10 +3,9 @@
 #include<deque>
 #include<vector>
 #include<algorithm>
-bool compareJobLoad(Job first, Job second) { return first.getLoad()< second.getLoad();}
 int PSRunner::run(float duration, float mu, std::deque<Job>& queue){
 	int dropped=0;
-	std::sort(queue.begin(),queue.end(),compareJobLoad);
+	std::sort(queue.begin(),queue.end(),[](Job first, Job second){return first.getLoad()< second.getLoad();});
 	std::deque<Job>:: iterator it = queue.begin();
 	std::vector<float> mileStones;
 	mileStones.push_back(duration);
