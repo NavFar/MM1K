@@ -16,7 +16,7 @@ Job Generator::generateJob(Distribution dueTimeDistribution,Distribution typeDis
 	float load = 1;
 
 	if(typeDistribution == Distribution::Uniform){
-		std::uniform_int_distribution<> uniformDistribution(1,static_cast<int>(JobType::Count)-1);
+		std::uniform_int_distribution<> uniformDistribution(0,static_cast<int>(JobType::Count)-1);
 		type = static_cast<JobType>(uniformDistribution(randomNumberGenerator));
 	}
 
