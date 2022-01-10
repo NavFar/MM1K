@@ -5,4 +5,5 @@
 #define PARAMETERS_FILE "parameters.conf"
 #define FCFS_NAME "FCFS"
 #define PS_NAME "PS"
+#define GPS_NAME "GPS"
 #endif
