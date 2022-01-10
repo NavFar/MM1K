@@ -1,18 +1,11 @@
-#ifndef GENERATOR_H
-#define GENERATOR_H
-
+#ifndef DPS_RUNNER_H
+#define DPS_RUNNER_H
+#include<deque>
 #include"job.h"
-#include"distribution.h"
-#include<random>
-class Generator{
-	private:
-		float lambda;
-		float theta;
-		std::default_random_engine randomNumberGenerator;
-
-	public:
-		Generator(float, float);
-		Job generateJob(Distribution,Distribution);
-		float generateJobInterval();
+#include"server-runner.h"
+class DPSRunner :public ServerRunner {
+        public:
+                int run(float duration, float mu, std::deque<Job>& queue);
 };
+
 #endif
