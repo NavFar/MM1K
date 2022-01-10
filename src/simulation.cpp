@@ -8,7 +8,7 @@
 #include"server-runner.h"
 #include"fcfs-runner.h"
 #include"ps-runner.h"
-#include"gps-runner.h"
+#include"dps-runner.h"
 #include"constants.h"
 using namespace std;
 int main() {
@@ -26,8 +26,8 @@ int main() {
 		serverRunner = new FCFSRunner();
 	else if(queueStrategy==PS_NAME)
 		serverRunner = new PSRunner();
-	else if(queueStrategy==GPS_NAME)
-		serverRunner = new GPSRunner();
+	else if(queueStrategy==DPS_NAME)
+		serverRunner = new DPSRunner();
 	else
 		return 1;
 	Server server(mu,K,new FCFSRunner());
