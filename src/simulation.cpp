@@ -5,6 +5,7 @@
 #include"server.h"
 #include"distribution.h"
 #include"job.h"
+#include"job-type.h"
 #include"server-runner.h"
 #include"fcfs-runner.h"
 #include"ps-runner.h"
@@ -34,21 +35,29 @@ int main() {
 	Server server(mu,K,serverRunner);
 	run(generator, server,Distribution::Fixed,Distribution::Uniform);
 	run(generator, server,Distribution::Exponential,Distribution::Uniform);
+	cout<<endl;
 }
 void run(Generator& generator, Server& server, Distribution jobDistribution, Distribution jobTypeDistribution){
 	long blocked=0;
 	long droped=0;
+	long urgentDropped=0;
 	for(long i=0;i<REPEAT;i++) {
 		Job job = generator.generateJob(jobDistribution, jobTypeDistribution);
 		float interval = generator.generateJobInterval();
 		if(!server.addJob(job))	{
 			blocked++;
 		}
-		droped+= server.run(interval).size();
-
+		deque<Job> response =  server.run(interval);
+		droped+=response.size();
+		for(int i=0;i<response.size();i++)
+		{
+			if(response[i].getType()==JobType::Urgent)
+				urgentDropped++;
+		}
+		
 	}
 	cout<<(double)blocked/REPEAT<<"\t";
-	cout<<(double)droped/REPEAT<<"\t";
-
-
+	cout<<(double)(droped)/REPEAT<<"\t";
+	cout<<(double)(droped-urgentDropped)/REPEAT<<"\t";
+	cout<<(double)(urgentDropped)/REPEAT<<"\t";
 }
