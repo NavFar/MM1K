@@ -2,8 +2,8 @@
 #include"job.h"
 #include<deque>
 
-int FCFSRunner::run(float duration, float mu,std::deque<Job>& queue){
-	int droped = 0;
+std::deque<Job> FCFSRunner::run(float duration, float mu,std::deque<Job>& queue){
+	std::deque<Job> dropped;
 	float load = duration * mu;
 	while(load>0 && queue.size()>0){
 		float passedTime=duration;
@@ -20,7 +20,7 @@ int FCFSRunner::run(float duration, float mu,std::deque<Job>& queue){
 		while(it< queue.end()){
 			it->decreaseDue(passedTime/mu);
 			if(it->getDue()<=0){
-				droped++;
+				dropped.push_back(*it);
 				it= queue.erase(it);
 			}
 			else
@@ -32,6 +32,6 @@ int FCFSRunner::run(float duration, float mu,std::deque<Job>& queue){
 		}
 
 	}
-	return droped;
+	return dropped;
 
 }

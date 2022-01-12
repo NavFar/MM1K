@@ -1,6 +1,7 @@
 #include"server.h"
 #include"job.h"
 #include"server-runner.h"
+#include<deque>
 Server::Server(float mu, int maxSize, ServerRunner * runner){
 	this->mu = mu;
 	this->maxSize = maxSize;
@@ -14,6 +15,6 @@ bool Server::addJob(Job job){
 	this->queue.push_back(job);
 	return true;
 }
-int Server::run(float duration){
+std::deque<Job> Server::run(float duration){
 	return	this->runner->run(duration, this->mu, this->queue);
 }

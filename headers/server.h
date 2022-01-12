@@ -13,6 +13,6 @@ class Server {
 	Server(float,int,ServerRunner*);
 	~Server();
 	bool addJob(Job);
-	int run(float);
+	std::deque<Job> run(float);
 };
 #endif

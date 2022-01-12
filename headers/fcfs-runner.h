@@ -5,6 +5,6 @@
 #include"server-runner.h"
 class FCFSRunner :public ServerRunner {
 	public:
-		int run(float duration,float mu,std::deque<Job>& queue);
+		std::deque<Job> run(float duration,float mu,std::deque<Job>& queue);
 };
 #endif

@@ -3,8 +3,8 @@
 #include<deque>
 #include<vector>
 #include<algorithm>
-int PSRunner::run(float duration, float mu, std::deque<Job>& queue){
-	int dropped=0;
+std::deque<Job> PSRunner::run(float duration, float mu, std::deque<Job>& queue){
+	std::deque<Job> dropped;
 	std::sort(queue.begin(),queue.end(),[](Job first, Job second){return first.getLoad()< second.getLoad();});
 	std::deque<Job>:: iterator it = queue.begin();
 	std::vector<float> mileStones;
@@ -34,7 +34,7 @@ int PSRunner::run(float duration, float mu, std::deque<Job>& queue){
 			}
 			it->decreaseDue(*mileStonesIt);
 			if(it->getDue()<=0){
-				dropped++;
+				dropped.push_back(*it);
 				it=queue.erase(it);
 			}
 			else{
