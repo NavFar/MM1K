@@ -12,6 +12,7 @@ std::deque<Job> PSRunner::run(float duration, float mu, std::deque<Job>& queue){
 	while(it < queue.end()){
 		if(it->getDue()<=duration)
 			mileStones.push_back(it->getDue());
+		it++;
 	}
 	std::vector<float>::iterator mileStonesIt;
 	mileStonesIt = std::unique(mileStones.begin(),mileStones.end());
@@ -24,7 +25,7 @@ std::deque<Job> PSRunner::run(float duration, float mu, std::deque<Job>& queue){
 	while(mileStonesIt<mileStones.end()){
 		*mileStonesIt -= reference;
 		reference += *mileStonesIt;
-		float share = *mileStonesIt * mu / queue.size();
+		float share = *mileStonesIt * mu / (float)queue.size();
 		it= queue.begin();
 		while(it < queue.end()){
 			if(it->getLoad()<= share){
@@ -33,7 +34,7 @@ std::deque<Job> PSRunner::run(float duration, float mu, std::deque<Job>& queue){
 				continue;
 			}
 			it->decreaseDue(*mileStonesIt);
-			if(it->getDue()<=0){
+			if(it->getDue()<0){
 				dropped.push_back(*it);
 				it=queue.erase(it);
 			}
