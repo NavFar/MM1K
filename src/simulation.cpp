@@ -11,6 +11,7 @@
 #include"dps-runner.h"
 #include"constants.h"
 using namespace std;
+void run(Generator&, Server&, Distribution, Distribution);
 int main() {
 	cout.precision(20);
 	ifstream fin(PARAMETERS_FILE);
@@ -21,7 +22,7 @@ int main() {
 	cin>>lambda;
 	Generator generator(lambda,theta);
 	ServerRunner * serverRunner;
-	
+
 	if(queueStrategy==FCFS_NAME)
 		serverRunner = new FCFSRunner();
 	else if(queueStrategy==PS_NAME)
@@ -30,33 +31,24 @@ int main() {
 		serverRunner = new DPSRunner();
 	else
 		return 1;
-	Server server(mu,K,new FCFSRunner());
+	Server server(mu,K,serverRunner);
+	run(generator, server,Distribution::Fixed,Distribution::Uniform);
+	run(generator, server,Distribution::Exponential,Distribution::Uniform);
+}
+void run(Generator& generator, Server& server, Distribution jobDistribution, Distribution jobTypeDistribution){
 	long blocked=0;
 	long droped=0;
 	for(long i=0;i<REPEAT;i++) {
-		Job job = generator.generateJob(Distribution::Fixed,Distribution::Uniform);
+		Job job = generator.generateJob(jobDistribution, jobTypeDistribution);
 		float interval = generator.generateJobInterval();
 		if(!server.addJob(job))	{
 			blocked++;
 		}
-		droped+= server.run(interval);
+		droped+= server.run(interval).size();
 
 	}
 	cout<<(double)blocked/REPEAT<<"\t";
 	cout<<(double)droped/REPEAT<<"\t";
 
-	blocked=0;
-	droped=0;
-	for(long i=0;i<REPEAT;i++) {
-		Job job = generator.generateJob(Distribution::Exponential,Distribution::Uniform);
-		float interval = generator.generateJobInterval();
-		if(!server.addJob(job))	{
-			blocked++;
-		}
-		droped+= server.run(interval);
-
-	}
-	cout<<(double)blocked/REPEAT<<"\t";
-	cout<<(double)droped/REPEAT<<endl;
 
 }
